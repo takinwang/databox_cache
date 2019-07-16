@@ -1,0 +1,15 @@
+[Unit]
+Description=DboxCache Server
+After=network.target
+Documentation=http://www.gscloud.cn/manual
+
+[Service]
+Environment="OPTIONS=-P 6500 --path /opt/dboxcache -d"
+ 
+ExecStart=/usr/bin/dboxcache $OPTIONS  
+
+PIDFile=/var/run/dboxcache.pid
+Type=forking
+
+[Install]
+WantedBy=multi-user.target

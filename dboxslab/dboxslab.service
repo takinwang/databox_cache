@@ -1,0 +1,16 @@
+[Unit]
+Description=DboxSlab Server
+After=network.target
+Documentation=http://www.gscloud.cn/manual?app=DboxSlab
+
+[Service]
+Environment="OPTIONS=-H dboxcache -M 1/3 -s /var/run/dboxslab.sock -d" 
+# -S 500GB --path /opt/dboxslab/ 
+ 
+ExecStart=/usr/bin/dboxslab $OPTIONS  
+
+PIDFile=/var/run/dboxslab.pid
+Type=forking
+
+[Install]
+WantedBy=multi-user.target
